@@ -1,0 +1,15 @@
+// main.scss
+@import 'variables';
+@import 'global';
+@import 'utils';
+@import 'antDesign';
+
+// Primero las librerías de terceros (si las hubiera)
+
+// AL FINAL: Tus estilos BEM, para que sobrescriban todo lo demás
+@import '../modules/vacations/presentation/styles/vacationForm';
+@import '../modules/vacations/presentation/styles/vacationDashboard';
+@import '../modules/Dashboard/presentation/styles/Dashboard';
+@import '../shared/presentation/styles/navbar';
+@import '../shared/presentation/styles/sidebar';
+@import '../shared/presentation/styles/mainLayout';

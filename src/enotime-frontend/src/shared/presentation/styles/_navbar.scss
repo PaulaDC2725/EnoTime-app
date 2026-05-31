@@ -1,0 +1,120 @@
+@import '../../../styles/variables';
+
+.eno-navbar {
+    height: $nav-height-mobile-offset;
+    background-color: $color-bg-table;
+    border-bottom: 1px solid $border-light;
+    border-left: 1px solid $border-light;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: $z-index-toast;
+    top: 0;
+    position: fixed;
+
+    &__left {
+        width: 24px;
+        height: auto;
+        padding-left: 1.25rem;
+    }
+
+    &__toggle-menu {
+        color: $color-black;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+
+        @media (min-width: 1280px) {
+            display: none;
+        }
+    }
+
+    &__center {
+        height: 100%;
+    }
+
+    &__brand-mobile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        height: 100%;
+
+        @media (min-width: 1280px) {
+            display: none;
+        }
+    }
+
+    &__logo-img {
+        height: 100%;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: $space-xl;
+        padding-right: 0.75rem;
+    }
+
+    &__notification-box {
+        position: relative;
+        cursor: pointer;
+        color: $color-text-primary-light;
+
+    }
+
+    &__notification-bell {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background-color: $color-primary;
+        color: $color-white;
+        font-size: 10px;
+        font-weight: $font-weight-bold;
+        min-width: 16px;
+        height: 16px;
+        border-radius: $radius-circle;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: $radius-circle;
+        overflow: hidden;
+        background-color: $color-primary-light-login;
+    }
+
+    &__user-meta {
+        display: none;
+        align-items: center;
+        gap: $space-xs;
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
+    }
+
+    &__user-name {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-black;
+    }
+
+    &__chevron {
+        font-size: 10px;
+        color: $color-text-primary-light;
+    }
+
+    @media (min-width: 1280px) {
+        height: $nav-height;
+    }
+}

@@ -1,0 +1,164 @@
+@import 'variables';
+
+/* Reusable utility styles */
+
+.utils__breadcrumb-container,
+.utils__breadcrumb-wrapper {
+	flex: 1;
+}
+
+.requiredClass::after {
+	content: "*";
+	color: black;
+	margin-left: 3px;
+}
+
+.text-center-important {
+	text-align: center !important;
+}
+
+/* Standard Enovate Button */
+.btn-1 {
+	background: #7209af;
+	color: #fff;
+	border: 2px solid #7209af;
+	position: relative;
+	z-index: $z-index-base;
+	overflow: hidden;
+	display: inline-block;
+	border-radius: 30px;
+	width: 100px;
+	height: 46px;
+}
+
+.btn-1:hover {
+	color: #fff;
+}
+
+.btn-1:disabled {
+	background: #7209af;
+	color: #fff;
+	border: 2px solid #7209af;
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* Table Utilities */
+.table-container-plunger {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.pagination-controls {
+	margin-top: $font-size-xxs;
+	text-align: center;
+}
+
+.pagination-controls button {
+	padding: 5px $font-size-xxs;
+	margin: $space-0 5px;
+	cursor: pointer;
+}
+
+/* Secondary Buttons */
+.utils__btn-cancel {
+	height: $btn-h-sm;
+	padding: $btn-py-2xs $btn-px-md;
+	color: $color-black;
+	border: 1px solid $border-btn-cancel;
+	border-radius: $radius-md;
+	font-weight: $font-weight-bold;
+	font-size: $font-size-xs;
+	letter-spacing: $tracking-wide;
+	background: $color-white;
+}
+
+.utils__btn {
+	height: $btn-h-md;
+	padding: $btn-py-2xs $btn-px-md;
+	color: $color-white;
+	border-radius: $radius-circle;
+	font-weight: $font-weight-bold;
+	font-size: $font-size-sm;
+	letter-spacing: $tracking-wide;
+	margin-left: $space-xs;
+	min-width: 90px;
+}
+
+.utils__btn--active {
+	background: $color-primary;
+}
+
+.utils__btn--disabled {
+	background: $color-btn-disable;
+	cursor: not-allowed;
+}
+
+/* Input Utilities */
+.utils__input {
+	height: $input-height !important;
+	border-radius: $input-border-radius !important;
+	padding: 0 $space-sm !important;
+	border: 1px solid $input-border-color !important;
+	font-size: $font-size-xs !important;
+	color: $input-color !important;
+}
+
+.utils__input--error {
+	border-color: $input-error-border !important;
+	background-color: $input-error-bg !important;
+}
+
+.utils__error-msg {
+	color: $color-error;
+	font-size: $font-size-xs;
+	margin: $space-xxs 0 0 $space-xs;
+	text-align: left;
+}
+
+/* Modal Internal Layout Utilities */
+.utils__modal-container {
+	text-align: center;
+}
+
+.utils__modal-title {
+	font-size: $font-size-lg;
+	font-weight: $font-weight-bold;
+	display: block;
+	margin-bottom: $font-size-xxs;
+	color: $color-black;
+}
+
+.utils__modal-description {
+	color: $color-neutral-dark;
+	margin: $space-0;
+}
+
+/* Loading Overlays */
+.utils__loading-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.7);
+	z-index: 100;
+	backdrop-filter: blur(2px);
+	border-radius: $radius-md;
+}
+
+/* Responsive Handling */
+@media (min-width: 1280px) {
+	.utils_form-columns {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: $space-md;
+	}
+
+	.utils__input {
+		font-size: $font-size-sm !important;
+	}
+}

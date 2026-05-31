@@ -1,0 +1,157 @@
+@import 'variables';
+
+/* Stylesheet for Ant Design Overrides */
+
+[class*="ant-"]:not([class*="anticon"]) {
+	font-family: 'Inter', sans-serif !important;
+}
+
+/* --- Date Pickers & Popups --- */
+.custom-popup-class .ant-picker-body {
+	background-color: #333;
+}
+
+.custom-popup-class .ant-picker-cell {
+	color: white !important;
+}
+
+.custom-popup-class .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+:where(.css-dev-only-do-not-override-nllxry).ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before,
+.custom-popup-class .ant-picker-cell-in-view.ant-picker-cell-in-range::before,
+.custom-calendar .ant-picker-cell .ant-picker-cell-in-view .ant-picker-cell-in-range {
+	background: #9f8ad9 !important;
+}
+
+.custom-popup-class .ant-picker-content thead th {
+	color: #9f8ad9 !important;
+}
+
+.custom-date-picker .ant-picker-ok button {
+	background-color: #6b21a8;
+	color: white;
+}
+
+/* --- Selects --- */
+.ant-select-arrow {
+	color: purple;
+}
+
+/* --- Global Select base (<form>) --- */
+form .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+	height: $input-height !important;
+	border-radius: $input-border-radius;
+	padding: 0 $space-sm !important;
+	border: 1px solid $input-border-color !important;
+	font-size: $font-size-xs !important;
+	color: $input-color !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+form .ant-select:not(.ant-select-customize-input) {
+	width: 100%;
+	height: $input-height;
+}
+
+.ant-select-item-option-active {
+	background-color: #e6f4ff !important;
+	color: #000 !important;
+}
+
+/* --- Steps --- */
+.custom-steps .ant-steps-item-process .ant-steps-item-icon {
+	border-radius: 5px;
+	background-color: $color-primary;
+	border: 1px solid $color-primary;
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-icon {
+	border-radius: 5px;
+	background-color: #ccafe2;
+	color: $color-primary;
+}
+
+.custom-steps .ant-steps-item-process .ant-steps-item-icon:hover {
+	border: 1px solid $color-primary;
+}
+
+.custom-step:hover .ant-steps-item-title,
+.custom-step:hover .ant-steps-item-description {
+	color: #e2b4ff !important;
+}
+
+/* --- Checkboxes --- */
+.my-checkbox .ant-checkbox-checked .ant-checkbox-inner,
+.custom-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+	background-color: $color-primary !important;
+	border: 1px solid $color-primary !important;
+}
+
+/* --- Tables --- */
+.custom-table .ant-table {
+	background-color: rgb(38 38 38);
+	color: #f0f0f0;
+}
+
+.custom-table .ant-table-thead>tr>th {
+	background-color: rgb(68, 68, 68) !important;
+	color: white;
+	padding: 1rem 1.5rem;
+	font-weight: 600;
+	text-align: left;
+	transition: background-color 0.3s ease !important;
+}
+
+.custom-table .ant-table-tbody>tr>td {
+	padding: 1rem 1.5rem;
+	background-color: rgb(38 38 38) !important;
+	color: white;
+	transition: background-color 0.3s ease !important;
+}
+
+.custom-table .ant-table-thead>tr>th:hover,
+.custom-table .ant-table-tbody>tr:hover>td {
+	background-color: #535353 !important;
+}
+
+/* --- Pagination --- */
+.custom-purple-pagination .ant-pagination-item-active {
+	border-color: #722ed1;
+}
+
+.custom-purple-pagination .ant-pagination-item-active a {
+	color: #722ed1 !important;
+}
+
+.custom-pagination .ant-pagination-item {
+  border-radius: 18px;
+}
+
+.custom-pagination .ant-pagination-item-active {
+  background-color: $color-grey-ligth;
+  border-color: $color-grey-ligth;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+  color: $color-grey-dark-text;
+}
+
+/* --- Modals --- */
+.ant-modal-mask {
+	backdrop-filter: blur(6px) !important;
+	background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.ant-modal .ant-modal-title {
+	font-size: $font-size-lg;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: $font-weight-bold;
+	color: $color-black;
+}
+
+.ant-modal-content {
+	border-radius: $radius-md !important;
+	padding: $space-xl $space-2xl !important;
+}

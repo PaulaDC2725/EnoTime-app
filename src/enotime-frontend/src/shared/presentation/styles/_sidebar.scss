@@ -1,0 +1,210 @@
+@import '../../../styles/variables';
+
+.eno-sidebar {
+    background-color: $color-bg-table;
+    border-right: 1px solid $border-light;
+    transition: width $transition-medium ease-in-out;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: $shadow-md;
+    height: 100vh;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-index-modal;
+
+    // =========================
+    // MOBILE FIRST
+    // =========================
+
+    width: 0;
+
+    transform: translateX(-100%);
+
+    &--mobile-open {
+        width: $sidebar-width-expanded;
+        transform: translateX(0);
+    }
+
+    @media (min-width: 1280px) {
+
+        transform: translateX(0);
+
+        &--expanded {
+            width: $sidebar-width-expanded;
+        }
+
+        &--collapsed {
+            width: $sidebar-width-collapsed;
+
+            .eno-sidebar__item {
+                padding: 10px 0;
+                width: 40px;
+                margin: 4px auto;
+                justify-content: center;
+                border-radius: 12px;
+            }
+
+            .eno-sidebar__label,
+            .eno-sidebar__chevron-container {
+                opacity: 0;
+                width: 0;
+                margin-left: 0;
+                pointer-events: none;
+                display: none;
+            }
+
+            .eno-sidebar__divider {
+                width: 24px;
+                margin: $space-md auto;
+            }
+        }
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: $nav-height;
+        cursor: pointer;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    &__logo-img {
+        width: 100%;
+        min-width: 120px;
+        object-fit: contain;
+    }
+
+    &__brand-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__toggle-slim {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        color: $color-grey-dark-text;
+        transition: color $transition-fast;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    &__slim-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__menu {
+        list-style: none;
+        padding: $space-sm 0;
+        margin: 0;
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px 14px;
+        cursor: pointer;
+        color: $color-grey-dark-text;
+        transition: all $transition-fast ease-in-out;
+        margin: 2px $space-xs;
+        border-radius: $radius-md;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:hover {
+            background-color: $color-primary-faint;
+            color: $color-primary;
+        }
+
+        &--active {
+            background-color: $color-primary;
+            color: $color-white;
+            font-weight: $font-weight-bold;
+
+            &:hover {
+                color: $color-white;
+            }
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        min-width: 26px;
+        height: 26px;
+    }
+
+    &__svg-icon {
+        width: 24px;
+        height: 24px;
+        color: inherit;
+    }
+
+    &__label {
+        margin-left: $space-md;
+        flex: 1;
+        font-size: $font-size-sm;
+        opacity: 1;
+        transition: opacity $transition-fast ease-in-out, width $transition-fast ease-in-out;
+    }
+
+    &__chevron-container {
+        display: flex;
+        align-items: center;
+        opacity: 1;
+        transition: opacity $transition-fast;
+    }
+
+    &__chevron {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__divider {
+        height: 1px;
+        background-color: $border-header-table;
+        margin: $space-md $space-md;
+        transition: width $transition-fast;
+    }
+
+    &__submenu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__submenu-item {
+        padding: 10px $space-md 10px 3.5rem;
+        color: $color-grey-dark-text;
+        font-size: $font-size-xs;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:hover {
+            color: $color-primary;
+        }
+
+        &--active {
+            color: $color-primary;
+            font-weight: $font-weight-bold;
+        }
+    }
+}

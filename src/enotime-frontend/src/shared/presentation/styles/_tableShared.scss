@@ -1,0 +1,163 @@
+@import '../../../styles/variables';
+
+.eno-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+
+    &__wrapper {
+
+        width: calc(100% - $space-xl);
+        background-color: $color-white;
+        border-radius: $radius-lg;
+        padding: $space-md;
+        box-shadow: $shadow-sm;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    &__th {
+        padding-bottom: $space-sm;
+        border-bottom: 1px solid $border-light;
+        vertical-align: top;
+
+        &--center {
+            text-align: center;
+        }
+
+        &--right {
+            text-align: right;
+        }
+
+        &--left {
+            text-align: left;
+        }
+    }
+
+    &__th-header {
+        display: flex;
+        align-items: center;
+        gap: $space-xs;
+        justify-content: space-between;
+    }
+
+    &__th-title {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+        display: flex;
+        align-items: center;
+        gap: $space-3xs;
+        user-select: none;
+
+        &--sortable {
+            cursor: pointer;
+            transition: color $transition-fast;
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+    }
+
+    &__filter-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: $color-text-place-holder;
+        padding: 4px;
+        border-radius: $radius-xs;
+        display: flex;
+        align-items: center;
+        transition: all $transition-fast;
+
+        &:hover {
+            color: $color-primary;
+            background-color: $color-bg-input-table;
+        }
+
+        &--active {
+            color: $color-white;
+            background-color: $color-primary;
+
+            &:hover {
+                color: $color-white;
+                background-color: $color-primary-dark;
+            }
+        }
+    }
+
+    &__filter-box {
+        margin-top: $space-xs;
+    }
+
+    &__filter-input {
+        width: 100%;
+        padding: $space-3xs $space-xs;
+        border: 1px solid $border-input;
+        border-radius: $radius-xs;
+        font-size: $font-size-xs;
+        color: $color-text-primary;
+        outline: none;
+        box-sizing: border-box;
+
+        &:focus {
+            border-color: $color-primary;
+        }
+    }
+
+    &__td {
+        font-size: $font-size-xs;
+        color: $color-text-primary-light;
+        padding: $space-md 0;
+        border-bottom: 1px solid $border-light;
+
+        &--center {
+            text-align: center;
+        }
+
+        &--right {
+            text-align: right;
+        }
+
+        &--left {
+            text-align: left;
+        }
+
+        &--empty {
+            text-align: center;
+            padding: $space-xl;
+            color: $color-text-place-holder;
+            font-style: italic;
+        }
+    }
+
+    &__tr:last-child .eno-table__td {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    @media (min-width: 1280px) {
+        scrollbar-width: thin;
+        scrollbar-color: $color-primary-light transparent; 
+
+        &::-webkit-scrollbar {
+            display: block;
+            height: 2px; 
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-primary-light;
+            border-radius: $radius-circle;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $color-primary-dark;
+        }
+    }
+
+}

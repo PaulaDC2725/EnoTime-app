@@ -1,0 +1,134 @@
+@import 'variables';
+
+/* =========================================
+   Global System Overrides (Force Light Theme)
+   ========================================= */
+:root {
+  /* ¡Esta línea es la magia! Le prohíbe al navegador usar su modo oscuro nativo */
+  color-scheme: light only; 
+}
+
+html,
+body {
+  margin: $space-0;
+  padding: $space-0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* Forzamos explícitamente la paleta de colores base de Enovate */
+  background-color: $color-bg-table !important;
+  color: $color-text-primary !important;
+}
+
+/* =========================================
+   Scrollbars & Other Globals
+   ========================================= */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-primary-light;
+  border-radius: $radius-xxs;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #7f20c8;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: $space-0;
+}
+
+input[type="number"] .domain {
+  text-align: center;
+}
+
+/* Custom Scroll Bar Styles */
+.custom-dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: #8c8c8c;
+  border-radius: 3px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background-color: #666666;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* Tooltip & Data Charts */
+.chart-tooltip {
+  font-family: sans-serif;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.chart-tooltip__header {
+  margin: $space-0 $space-0 5px $space-0;
+  font-weight: bold;
+}
+
+.chart-tooltip__item {
+  margin: $space-xxs $space-0 $space-0 $space-0;
+  display: flex;
+  justify-content: space-between;
+  gap: $font-size-xxs;
+}
+
+.chart-tooltip__value {
+  font-weight: normal;
+}
+
+/* Global Animations */
+@keyframes blinking {
+  0% {
+    background: linear-gradient(to right, #F5222D 0%, #FFF1F0 50%, #fff 100%);
+  }
+  100% {
+    background: linear-gradient(to right, transparent 0%, transparent 100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: $space-0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+#root-portal {
+  position: relative;
+  z-index: 9999;
+}
