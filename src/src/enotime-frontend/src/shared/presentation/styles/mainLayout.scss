@@ -1,0 +1,115 @@
+@import '../../../styles/variables';
+
+.eno-layout {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    &__content-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+        height: 100vh;
+
+        transition: all $transition-medium ease-in-out;
+
+        // =========================
+        // MOBILE FIRST
+        // =========================
+
+        width: 100dvw;
+        margin-left: 0;
+
+        .eno-navbar {
+            width: 100dvw;
+            transition:
+                width $transition-medium ease-in-out,
+                margin-left $transition-medium ease-in-out;
+        }
+
+        // =========================
+        // DESKTOP
+        // =========================
+
+        @media (min-width: 1280px) {
+
+            &--collapsed {
+
+                margin-left: $sidebar-width-collapsed;
+
+                .eno-navbar {
+                    width: calc(100dvw - #{$sidebar-width-collapsed});
+                }
+            }
+
+            &--expanded {
+
+                margin-left: $sidebar-width-expanded;
+
+                .eno-navbar {
+                    width: calc(100dvw - #{$sidebar-width-expanded});
+                }
+            }
+        }
+    }
+
+    &__main-view {
+        flex: 1;
+        overflow-y: auto;
+        background-color: $color-bg-table;
+
+        padding: $padding-mainLayout-mobile;
+
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        @media (min-width: 768px) {
+            padding: $padding-mainLayout-tablet;
+        }
+
+        @media (min-width: 1280px) {
+            padding: $padding-mainLayout ;
+            scrollbar-width: thin;
+            scrollbar-color: $color-primary-light transparent; 
+
+            &::-webkit-scrollbar {
+                display: block;
+                width: 2px; 
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $color-primary-light; 
+                border-radius: $radius-circle;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: $color-primary-dark; 
+            }
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.25);
+
+        backdrop-filter: blur(4px);
+
+        z-index: $z-index-20;
+    }
+}

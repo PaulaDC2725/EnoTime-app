@@ -1,0 +1,63 @@
+@import '../../../../styles/variables';
+
+/* =========================================
+   MODULE: VACATIONS - FORM
+   ========================================= */
+.vacation-form {
+  background-color: $color-white;
+  padding: $space-xl;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  border: 1px solid $border-header-table;
+  max-width: 800px;
+  margin: 0 auto;
+
+  /* Element: Header container */
+  &__header {
+    margin-bottom: $space-lg;
+    border-bottom: 2px solid $color-primary-faint;
+    padding-bottom: $space-sm;
+  }
+
+  /* Element: Main title */
+  &__title {
+    color: $color-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin: $space-0;
+  }
+
+  /* Element: Input grid for multi-column layouts */
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-md;
+    margin-bottom: $space-md;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Element: Form row for full width inputs */
+  &__row {
+    margin-bottom: $space-md;
+    width: 100%;
+  }
+
+  /* Element: Actions container */
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-md;
+    margin-top: $space-xl;
+    border-top: 1px solid $border-light;
+    padding-top: $space-md;
+  }
+
+  /* Modifier: Loading state */
+  &--loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}

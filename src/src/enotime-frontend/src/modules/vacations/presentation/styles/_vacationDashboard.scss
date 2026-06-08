@@ -1,0 +1,186 @@
+@import '../../../../styles/variables';
+
+/* =========================================
+   MODULE: VACATIONS - DASHBOARD
+   ========================================= */
+.vacation-dashboard {
+  padding: $space-sm;
+  background-color: $color-bg-table;
+  min-height: calc(100vh - #{$nav-height});
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+
+  @media (min-width: 768px) {
+    padding: $space-lg;
+    gap: $space-xl;
+  }
+
+  /* Element: Header container layout */
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  /* Element: Text headings group */
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Element: Main view title */
+  &__title {
+    color: $color-primary;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin: $space-0;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  /* Element: View descriptive subtitle */
+  &__subtitle {
+    color: $color-text-primary-light;
+    font-size: $font-size-xs;
+    margin: $space-0;
+  }
+
+  /* Element: Perspective control bar */
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-sm;
+  }
+
+  /* Element: Sandbox role toggle wrapper */
+  &__role-selector {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    background-color: $color-white;
+    padding: $space-3xs $space-md;
+    border-radius: $radius-circle;
+    border: 1px solid $border-neutral;
+  }
+
+  /* Element: Selector descriptive text */
+  &__selector-label {
+    font-size: $font-size-xs;
+    color: $color-grey-dark-text;
+    font-weight: $font-weight-semibold;
+  }
+
+  /* Element: KPI layout grid (Mobile First layout) */
+  &__stats-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-sm;
+    width: 100%;
+
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $space-md;
+    }
+  }
+
+  /* Element: Dashboard metric card */
+  &__stat-card {
+    background-color: $color-white;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    padding: $space-md;
+    box-shadow: $shadow-sm;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-xxs;
+    transition: $transition-medium;
+
+    @media (min-width: 768px) {
+      padding: $space-lg;
+    }
+
+    &:hover {
+      box-shadow: $shadow-md;
+      border-color: $color-primary-light;
+    }
+
+    /* Modifier: Highlights urgent items */
+    &--alert {
+      border-left: 4px solid $color-accent;
+    }
+
+    /* Modifier: Highlights informational milestones */
+    &--info {
+      border-left: 4px solid $color-secondary;
+    }
+
+    /* Nested Element: Big number output */
+    &-value {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-extra-bold;
+      color: $color-primary;
+      line-height: 1;
+
+      @media (min-width: 768px) {
+        font-size: $font-size-3xl;
+      }
+    }
+
+    /* Nested Element: Short uppercase indicator text */
+    &-label {
+      color: $color-neutral-dark;
+      font-size: $font-size-xxs;
+      text-transform: uppercase;
+      letter-spacing: $tracking-wider;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  /* Element: Split data layout section */
+  &__content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-md;
+    width: 100%;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  /* Element: Structured module block container */
+  &__section-block {
+    background-color: $color-white;
+    border: 1px solid $border-light;
+    border-radius: $radius-md;
+    padding: $space-md;
+    box-shadow: $shadow-sm;
+
+    @media (min-width: 768px) {
+      padding: $space-lg;
+    }
+  }
+
+  /* Element: Main section block header text */
+  &__section-title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-grey-dark-text;
+    margin: $space-0 var(--space-0) $space-md var(--space-0);
+  }
+}

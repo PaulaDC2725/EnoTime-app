@@ -1,0 +1,387 @@
+@import '../../../../styles/variables';
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xsm;
+    max-height: 100%;
+
+    &--expanded-view {
+        height: 100%;
+    }
+
+    // =========================
+    // BALANCES CAROUSEL
+    // =========================
+
+    &__balances {
+        display: flex;
+        flex-direction: column;
+        gap: $space-gap-general;
+    }
+
+    &__carousel {
+        display: flex;
+        gap: $space-xsm;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__balance-card {
+        min-width: 43.01%;
+        scroll-snap-align: start;
+        background: $color-white;
+        border-radius: $radius-lg;
+        box-shadow: $shadow-md;
+        padding: $space-xsm;
+        display: flex;
+        align-items: flex-start;
+        gap: $space-md;
+        min-height: 125px;
+    }
+
+    &__card-icon {
+        min-width: 20px;
+        border-radius: $radius-circle;
+        background-color: $bg-icon-purple;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-primary;
+        font-size: 1.5rem;
+
+        &-svg {
+            width: 20px;
+            height: 20px;
+            border-radius: $radius-circle;
+            object-fit: cover;
+            display: block;
+            fill: $color-primary;
+        }
+    }
+
+    &__card-content {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xsm;
+        height: 100%;
+    }
+
+    &__card-title {
+        font-size: $font-size-sm;
+        color: $color-text-primary-light;
+        height: 42px;
+        font-weight: $font-weight-bold;
+    }
+
+    &__card-value {
+        margin: 0;
+        height: 32px;
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-extra-bold;
+        color: $color-text-new;
+        text-align: center;
+    }
+
+    &__card-subtitle {
+        margin: 0;
+        font-size: $font-size-xs;
+        color: $color-text-primary-light;
+        height: $space-md;
+        text-align: center;
+    }
+
+    // =========================
+    // INDICATORS
+    // =========================
+
+    &__indicators {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $space-xs;
+        height: $space-sm;
+    }
+
+    &__indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: $radius-circle;
+        background-color: $color-neutral-light;
+        transition: all $transition-fast;
+
+        &--active {
+            width: 24px;
+            background-color: $color-primary;
+        }
+    }
+
+    // =========================
+    // CHART SECTION (ECharts)
+    // =========================
+
+    &__chart-section {
+        display: flex;
+        flex-direction: column;
+        gap: $space-md;
+
+        &--expanded {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            .dashboard__chart-card {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    &__chart-card {
+        background-color: $color-white;
+        border-radius: $radius-lg;
+        padding: $space-lg;
+        box-shadow: $shadow-md;
+    }
+
+    &__chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $space-sm;
+    }
+
+    &__chart-title {
+        margin: 0;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        color: $color-text-primary;
+    }
+
+    &__chart-actions {
+        display: flex;
+        align-items: center;
+        gap: $space-sm;
+    }
+
+    &__chart-select {
+        padding: $space-3xs $space-xs;
+        border: 1px solid $border-light;
+        border-radius: $radius-xs;
+        font-size: $font-size-xs;
+        color: $color-text-primary-light;
+        background-color: transparent;
+        outline: none;
+    }
+
+    &__chart-expand-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        color: $color-text-primary-light;
+        cursor: pointer;
+        padding: $space-3xs;
+        border-radius: $radius-xs;
+        transition: all $transition-fast;
+
+        &:hover {
+            background-color: $color-bg-input-table;
+            color: $color-primary;
+        }
+    }
+
+    &__chart-legend {
+        display: flex;
+        align-items: center;
+        gap: $space-xs;
+        margin-bottom: $space-xs;
+
+        &-line {
+            width: 16px;
+            height: 2px;
+            background-color: $color-primary;
+        }
+
+        &-text {
+            font-size: $font-size-xxs;
+            color: $color-text-primary-light;
+        }
+    }
+
+    &__chart-footer {
+        display: flex;
+        align-items: center;
+        gap: $space-xs;
+        margin-top: $space-md;
+        padding-top: $space-sm;
+        border-top: 1px solid $border-light;
+
+        &-icon {
+            color: $color-primary;
+            font-size: $font-size-lg;
+            flex-shrink: 0;
+        }
+
+        &-text {
+            margin: 0;
+            font-size: $font-size-xxs;
+            color: $color-text-primary-light;
+        }
+    }
+
+    // =========================
+    // RECENT REQUESTS TABLE
+    // =========================
+
+    &__requests {
+        display: flex;
+        flex-direction: column;
+        gap: $space-md;
+
+        &--expanded {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            .eno-table__wrapper {
+                flex: 1;
+                overflow-y: auto;
+            }
+        }
+    }
+
+    &__requests-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $space-sm;
+    }
+
+    &__section-title {
+        margin: 0;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+    }
+
+    &__requests-link-btn {
+        display: flex;
+        align-items: center;
+        gap: $space-3xs;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        color: $color-primary;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover {
+            color: $color-primary-dark;
+        }
+    }
+
+    &__table-wrapper {
+        background-color: $color-white;
+        border-radius: $radius-lg;
+        padding: $space-md;
+        box-shadow: $shadow-sm;
+        overflow-x: auto; 
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 500px; 
+        text-align: left;
+
+        th {
+            font-size: $font-size-xs;
+            font-weight: $font-weight-semibold;
+            color: $color-text-primary;
+            padding-bottom: $space-sm;
+            border-bottom: 1px solid $border-light;
+        }
+
+        td {
+            font-size: $font-size-xs;
+            color: $color-text-primary-light;
+            padding: $space-md 0;
+            border-bottom: 1px solid $border-light;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        &-center {
+            text-align: center;
+        }
+    }
+
+    // =========================
+    // STATUS BADGES
+    // =========================
+
+    &__status {
+        padding: $space-xxs $space-sm;
+        border-radius: $radius-circle;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+
+        &--pending {
+            background-color: $bg-status-incomplete;
+            color: $color-text-incomplete;
+        }
+
+        &--approved {
+            background-color: $bg-status-ready;
+            color: $color-success;
+        }
+
+        &--rejected {
+            background-color: $bg-status-error;
+            color: $color-error;
+        }
+    }
+
+    // =========================
+    // RESPONSIVE: TABLET
+    // =========================
+
+    @media (min-width: 768px) {
+        &__balance-card {
+            min-width: 380px;
+        }
+    }
+
+    // =========================
+    // RESPONSIVE: DESKTOP
+    // =========================
+
+    @media (min-width: 1280px) {
+        &__carousel {
+            overflow: visible;
+        }
+
+        &__balance-card {
+            min-width: 320px;
+            flex: 1;
+        }
+
+        &__indicators {
+            display: none;
+        }
+    }
+}

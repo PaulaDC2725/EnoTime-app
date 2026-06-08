@@ -1,0 +1,205 @@
+/* =========================================
+   Enovate Design Tokens (SCSS Variables)
+   ========================================= */
+
+/* --- Brand Colors --- */
+$color-primary: #7209b6;
+$color-primary-light: #B682D8;
+$color-primary-light-login: #F0E7FF;
+$color-primary-dark: #4b1f6b;
+$color-primary-faint: rgba(114, 9, 182, 0.05);
+
+$color-secondary: #5076ff;
+$color-secondary-light: #7c98ff;
+$color-secondary-dark: #2f4dd9;
+
+/* --- Neutrals --- */
+$color-neutral: #b1b1b2;
+$color-neutral-light: #d9d9d9;
+$color-grey-ligth: #E3E3E3; 
+$color-neutral-lighter: #f0f0f0; 
+$color-neutral-dark: #8a8a8b;
+$color-grey-text: #8c8c8c;
+$color-grey-dark-text: #262626;
+
+/* --- Status & Alerts (Base) --- */
+$color-accent: #e59819;
+$color-success: #22c55e;
+$color-warning: #facc15;
+$color-error: #dc2626;
+
+/* --- Status Backgrounds (Specific for Badges) --- */
+$bg-status-ready: rgba(76, 175, 80, 0.1);
+$bg-status-new: rgba(114, 9, 182, 0.1);
+$bg-status-incomplete: rgba(253, 188, 4, 0.1);
+$bg-status-running: #f5f3ff;
+$bg-status-error: #fef2f2;
+$bg-icon-purple: rgba(114, 9, 182, 0.1);
+
+/* --- Text Colors --- */
+$color-text-primary: #16151a;
+$color-text-primary-light: #706d8a;
+$color-text-primary-dark: #000000;
+$color-text-new: #7209B6;
+$color-text-incomplete: #D9A101;
+$color-text-running: #7c3aed;
+$color-text-error: #ef4444;
+$color-text-place-holder: #9CA3AF;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+/* --- Backgrounds & Gradients --- */
+$color-bg: transparent linear-gradient(139deg, #F1F1F2 0%, rgba(241, 241, 242, 0.6) 100%) 0% 0% no-repeat padding-box;
+$color-bg-table: #f1f1f2;
+$color-bg-header-table: #F9F9F9;
+$color-bg-steps: #FCFCFC;
+$color-bg-input-table: #f0f0f0;
+$color-nav-bar-normal: #f2f2f3;
+$color-nav-bar: linear-gradient(136deg, #F2F2F2 0%, #FCF8FF 100%) 0% 0% no-repeat padding-box;
+$color-primary-active: #230348;
+$color-deg-bg: rgba(255, 255, 255, 0.578);
+$color-btn-disable: #b682d8;
+$color-deg-bg-icons-map: rgba(0, 0, 0, 0.58);
+$color-line-side-bar: #B9B8C4;
+$color-bg-allocation-input-error: #FEF9C3;
+
+/* --- Borders --- */
+$border-neutral: #D1D1D1;
+$border-btn-cancel: #707070;
+$border-btn: #d8d8d8;
+$border-light: #e0e0e0;
+$border-input: #D8D7E0;
+$border-header-table: #ECEBEF;
+$border-td-table: #EDECF0;
+
+/* --- Fonts --- */
+$font-family-base: 'Inter', sans-serif;
+$font-size_select-label: 0.5rem;
+$font-size-xxs: 0.625rem;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-2lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+$font-size-3xl: 2.5rem;
+$font-size-4xl: 3.125rem;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+/* --- Spacing --- */
+$space-0: 0;
+$space-3xs: 0.125rem;
+$space-xxs: 0.25rem;
+$space-2xxs: 0.375rem;
+$space-xs: 0.5rem;
+$space-xsm: 0.625rem;
+$space-sm: 0.75rem;
+$space-gap-general: 0.9375rem;
+$space-md: 1rem;
+$space-2md: 1.25rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 3rem;
+$space-3xl: $font-size-3xl;
+$space-4xl: 4rem;
+$space-5xl: 5rem;
+$space-6xl: 6.25rem;
+
+$padding-mainLayout: 92px 20px 20px 20px;
+$padding-mainLayout-mobile: 104px 16px 16px 16px;
+$padding-mainLayout-tablet: 104px 20px 16px 20px;
+
+/* --- Layout Dimensions --- */
+$nav-height: 72px;
+$nav-height-mobile-offset: 88px;
+$layout-main-height: calc(100dvh - #{$nav-height-mobile-offset});
+$sidebar-width-collapsed: 53px;
+$sidebar-width-expanded: 220px;
+
+
+/* --- Tracking --- */
+$tracking-normal: 0em;
+$tracking-wide: 0.025em;
+$tracking-wider: 0.05em;
+$tracking-widest: 0.1em;
+
+/* --- Buttons Sizes --- */
+$btn-h-2xs: 1rem;
+$btn-h-xs: 1.5rem;
+$btn-h-sm: 2.125rem;
+$btn-h-2sm: 2rem;
+$btn-h-md: 2.5rem;
+$btn-h-lg: 3rem;
+$btn-h-xl: 3.5rem;
+
+$btn-min-w-xs: 4rem;
+$btn-min-w-sm: 5rem;
+$btn-min-w-md: 6rem;
+$btn-min-w-lg: 8rem;
+$btn-min-w-xl: 10rem;
+
+$btn-px-xs: 0.5rem;
+$btn-px-sm: 0.75rem;
+$btn-px-md: 1rem;
+$btn-px-lg: 1.25rem;
+$btn-px-xl: 1.5rem;
+$btn-px-2xl: 2rem;
+
+$btn-py-2xs: 0.25rem;
+$btn-py-xs: 0.5rem;
+$btn-py-sm: 0.75rem;
+$btn-py-md: 1rem;
+$btn-py-lg: 1.25rem;
+$btn-py-xl: 1.5rem;
+$btn-py-2xl: 2.125rem;
+
+/* --- Radius --- */
+$radius-xxs: $space-xxs;
+$radius-xs: $space-xs;
+$radius-sm: $space-sm;
+$radius-md: $space-md;
+$radius-lg: $space-lg;
+$radius-circle: 9999px;
+
+/* --- Shadows & Transitions --- */
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0px 6px 20px rgba(0, 0, 0, 0.05);
+
+$transition-fast: 0.15s ease-in-out;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+/* --- Z-Index --- */
+$z-index-base: 1;
+$z-index-10: 10;
+$z-index-15: 15;
+$z-index-20: 20;
+$z-index-dropdown: 1000;
+$z-index-modal: 1050;
+$z-index-toast: 1100;
+
+/* --- Input / Select Tokens --- */
+$input-height: 47px;
+$input-border-color: $border-input;
+$input-border-radius: $radius-xs;
+$input-color: $color-black;
+$input-placeholder-color: #706D8A;
+$input-error-border: #b91c1c;
+$input-error-bg: #fff1f0;
+$select-error-bg: #f8eeee;
+$select-label-bg: #999;
+
+/* --- VLP Legend Colors --- */
+$color-vlp-legend-tuned-fbhp: #fe3f40;
+$color-vlp-legend-untuned-fbhp: #253fce;
+$color-vlp-legend-gauge-pressure: #1e1b4b;
+$color-vlp-legend-reservoir-pressure: #684200;
+$color-vlp-legend-fbhp-perforations: #009130;
