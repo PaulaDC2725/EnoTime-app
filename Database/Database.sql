@@ -1,21 +1,12 @@
 -- =====================================================================
--- SCRIPT UNIFICADO: ENOTIME (SOPORTE PARA LOGIN PROPIO Y SSO)
+-- SCRIPT DEFINITIVO: ENOTIME (Todo en esquema public)
 -- =====================================================================
 
--- 1. Crear el rol de acceso para el backend
-DO $$
-BEGIN
-  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'enotime_app') THEN
-    CREATE ROLE enotime_app LOGIN PASSWORD 'EnovateTime2025*';
-  END IF;
-END$$;
-
--- 2. Crear extensiones y ESQUEMA
+-- 1. Habilitar extensiones
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "citext";
-CREATE SCHEMA IF NOT EXISTS app;
 
--- 3. Limpieza de tablas y tipos (Por seguridad, permite re-ejecutar sin errores)
+-- 2. Limpieza total (Borra todo en public)
 DROP TABLE IF EXISTS request_event CASCADE;
 DROP TABLE IF EXISTS request CASCADE;
 DROP TABLE IF EXISTS balance CASCADE;
@@ -23,26 +14,23 @@ DROP TABLE IF EXISTS user_account CASCADE;
 DROP TABLE IF EXISTS employee CASCADE;
 DROP TABLE IF EXISTS allowed_domain CASCADE;
 
-DROP TYPE IF EXISTS app.request_type CASCADE;
-DROP TYPE IF EXISTS app.request_status CASCADE;
-DROP TYPE IF EXISTS app.request_action CASCADE;
-DROP TYPE IF EXISTS app.user_role CASCADE;
+DROP TYPE IF EXISTS request_type CASCADE;
+DROP TYPE IF EXISTS request_status CASCADE;
+DROP TYPE IF EXISTS request_action CASCADE;
+DROP TYPE IF EXISTS user_role CASCADE;
 
--- 4. Crear Enums (para estados y tipos)
-CREATE TYPE app.request_type AS ENUM ('Vacation', 'Comp Time', 'Sick Leave');
-CREATE TYPE app.request_status AS ENUM ('Pending', 'Approved', 'Rejected');
-CREATE TYPE app.request_action AS ENUM ('Created', 'Updated', 'Approved', 'Rejected');
-CREATE TYPE app.user_role AS ENUM ('Empleado', 'Administrador');
+-- 3. Crear tipos de datos (ENUMs)
+CREATE TYPE request_type AS ENUM ('Vacation', 'Comp Time', 'Sick Leave');
+CREATE TYPE request_status AS ENUM ('Pending', 'Approved', 'Rejected');
+CREATE TYPE request_action AS ENUM ('Created', 'Updated', 'Approved', 'Rejected');
+CREATE TYPE user_role AS ENUM ('Employee', 'Administrator');
 
--- 5. Creación de Tablas Relacionales
-
--- Dominio Permitido
+-- 4. Creación de tablas
 CREATE TABLE allowed_domain (
     domain_id BIGSERIAL PRIMARY KEY,
     domain_name CITEXT UNIQUE NOT NULL
 );
 
--- Empleado
 CREATE TABLE employee (
     employee_id BIGSERIAL PRIMARY KEY,
     full_name TEXT NOT NULL,
@@ -53,21 +41,19 @@ CREATE TABLE employee (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Cuenta de Usuario (Híbrida)
 CREATE TABLE user_account (
     user_id BIGSERIAL PRIMARY KEY,
     employee_id BIGINT REFERENCES employee(employee_id) ON DELETE CASCADE,
     email CITEXT UNIQUE NOT NULL,
-    password_hash TEXT,             -- Agregado: Almacena contraseña encriptada para Login Propio
-    external_id TEXT,               -- Original: Almacena ID para Login con SSO
-    role_name app.user_role NOT NULL DEFAULT 'Empleado',
+    password_hash TEXT,
+    external_id TEXT,
+    role_name user_role NOT NULL DEFAULT 'Employee',
     profile_completed BOOLEAN DEFAULT FALSE,
     last_login_at TIMESTAMP WITH TIME ZONE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Saldo (Balances)
 CREATE TABLE balance (
     balance_id BIGSERIAL PRIMARY KEY,
     employee_id BIGINT REFERENCES employee(employee_id) ON DELETE CASCADE,
@@ -78,27 +64,36 @@ CREATE TABLE balance (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Solicitud (Request)
 CREATE TABLE request (
     request_id BIGSERIAL PRIMARY KEY,
     employee_id BIGINT REFERENCES employee(employee_id) ON DELETE CASCADE,
     manager_id BIGINT REFERENCES employee(employee_id),
-    type app.request_type NOT NULL,
+    type request_type NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     days INTEGER NOT NULL,
     justification TEXT,
-    status app.request_status NOT NULL DEFAULT 'Pending',
+    status request_status NOT NULL DEFAULT 'Pending',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Evento de Solicitud (Request Event/Auditoría)
 CREATE TABLE request_event (
     event_id BIGSERIAL PRIMARY KEY,
     request_id BIGINT REFERENCES request(request_id) ON DELETE CASCADE,
-    action app.request_action NOT NULL,
+    action request_action NOT NULL,
     user_id BIGINT REFERENCES user_account(user_id),
     comment TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 5. Inserción de datos iniciales
+INSERT INTO employee (full_name, email, manager_id) 
+VALUES ('Paula Delgado', 'admin@enotime.com', NULL);
+
+INSERT INTO user_account (employee_id, email, password_hash, role_name) 
+VALUES (1, 'admin@enotime.com', 'Admin2026*', 'Administrator');
+
+SELECT email, password_hash, role_name 
+FROM user_account 
+WHERE email = 'admin@enotime.com';

@@ -59,8 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         { path: '/reports', label: 'Reports', icon: <HiOutlineChartBar className="eno-sidebar__svg-icon" /> },
         { path: '/settings', label: 'Settings', icon: <HiOutlineCog8Tooth className="eno-sidebar__svg-icon" /> },
         { isDivider: true, label: 'div3' },
-        { path: '/support', label: 'Help & Support', icon: <HiOutlineQuestionMarkCircle className="eno-sidebar__svg-icon" /> },
-        { path: '/logout', label: 'Sign Out', icon: <HiOutlineArrowRightOnRectangle className="eno-sidebar__svg-icon" /> }
+        { path: '/support', label: 'Help & Support', icon: <HiOutlineQuestionMarkCircle className="eno-sidebar__svg-icon" /> }
     ];
 
     const adminMenu: MenuItem[] = [
@@ -72,10 +71,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         { isDivider: true, label: 'div2' },
         { path: '/team-overview', label: 'Team Overview', icon: <HiOutlineUserGroup className="eno-sidebar__svg-icon" /> },
         { path: '/reports', label: 'Reports', icon: <HiOutlineChartBar className="eno-sidebar__svg-icon" /> },
+        { path: '/register', label: 'Register Employee', icon: <HiOutlineUserGroup className="eno-sidebar__svg-icon" /> }, // NUEVA LÍNEA
         { path: '/settings', label: 'Settings', icon: <HiOutlineCog8Tooth className="eno-sidebar__svg-icon" /> },
         { isDivider: true, label: 'div3' },
-        { path: '/support', label: 'Help & Support', icon: <HiOutlineQuestionMarkCircle className="eno-sidebar__svg-icon" /> },
-        { path: '/logout', label: 'Sign Out', icon: <HiOutlineArrowRightOnRectangle className="eno-sidebar__svg-icon" /> }
+        { path: '/support', label: 'Help & Support', icon: <HiOutlineQuestionMarkCircle className="eno-sidebar__svg-icon" /> }
     ];
 
     const activeMenu = isAdminView ? adminMenu : employeeMenu;

@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
+import type { User } from '../../../modules/auth/domain/authTypes';
 
 interface MainLayoutProps {
     children: React.ReactNode;
     isAdminView: boolean;
+    currentUser: User | null;
+    onLogout: () => void;
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({
     children,
-    isAdminView
+    isAdminView,
+    currentUser,
+    onLogout
 }) => {
 
     // DESKTOP
@@ -67,6 +72,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
                 {!isMobileSidebarOpen && (
                     <Navbar
                         isAdminView={isAdminView}
+                        currentUser={currentUser}
+                        onLogout={onLogout}
                         onOpenMobileSidebar={() =>
                             setIsMobileSidebarOpen(true)
                         }

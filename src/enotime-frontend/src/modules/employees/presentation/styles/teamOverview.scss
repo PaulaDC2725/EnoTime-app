@@ -1,0 +1,58 @@
+@import '../../../../styles/variables';
+
+.eno-team-overview {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+    animation: fadeIn $transition-medium ease-in-out;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: $space-md;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+
+    &__title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $color-text-primary;
+        margin: 0 0 $space-3xs 0;
+    }
+
+    &__subtitle {
+        font-size: $font-size-sm;
+        color: $color-text-primary-light;
+        margin: 0;
+    }
+
+    &__action-btn {
+        display: flex;
+        align-items: center;
+        gap: $space-xs;
+        padding: $space-sm $space-md;
+        width: fit-content;
+    }
+
+    &__content {
+        width: 100%;
+        // Si el componente Register tiene su propio fondo de auth-layout, 
+        // puedes necesitar quitarle el fondo centrado en este contexto específico.
+    }
+
+    &__loading {
+        padding: $space-xl;
+        text-align: center;
+        color: $color-text-place-holder;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
