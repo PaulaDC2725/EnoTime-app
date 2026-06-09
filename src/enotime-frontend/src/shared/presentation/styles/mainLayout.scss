@@ -77,7 +77,7 @@
             padding: $padding-mainLayout-tablet;
         }
 
-        @media (min-width: 1280px) {
+        @media (min-width: 1024px) {
             padding: $padding-mainLayout ;
             scrollbar-width: thin;
             scrollbar-color: $color-primary-light transparent; 

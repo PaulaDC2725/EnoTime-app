@@ -5,7 +5,7 @@ import {
     HiOutlineSquares2X2, HiOutlineUser, HiOutlineDocumentText,
     HiOutlineClock, HiOutlineCalendarDays, HiOutlineUsers,
     HiOutlineChartBar, HiOutlineCog8Tooth, HiOutlineInboxStack,
-    HiOutlineUserGroup, HiOutlineQuestionMarkCircle, HiOutlineArrowRightOnRectangle,
+    HiOutlineUserGroup, HiOutlineQuestionMarkCircle, 
     HiOutlineChevronRight, HiOutlineChevronDown
 } from 'react-icons/hi2';
 
@@ -27,16 +27,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
     isHovered,
     onHoverChange,
     onToggle,
-    isMobileOpen,
-    onCloseMobile
+    isMobileOpen
 }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
     const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({ 'My Requests': true, 'Team Inbox': true });
-
     const isEffectivelyCollapsed = isCollapsed && !isHovered;
-    const modifier = isMobileOpen
+    const isDesktopView = typeof window !== 'undefined' && window.innerWidth >= 1280;
+    const modifier = isMobileOpen && !isDesktopView
         ? '--mobile-open'
         : isEffectivelyCollapsed
             ? '--collapsed'
@@ -83,13 +82,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <nav
             className={`eno-sidebar eno-sidebar${modifier}`}
             onMouseEnter={() => {
-                if (window.innerWidth >= 1280) {
+                if (isDesktopView) {
                     onHoverChange(true);
                 }
             }}
 
             onMouseLeave={() => {
-                if (window.innerWidth >= 1280) {
+                if (isDesktopView) {
                     onHoverChange(false);
                 }
             }}

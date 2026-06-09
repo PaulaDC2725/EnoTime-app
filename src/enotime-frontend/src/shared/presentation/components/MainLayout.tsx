@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
 import type { User } from '../../../modules/auth/domain/authTypes';
@@ -35,6 +35,19 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         isEffectivelyCollapsed
             ? '--collapsed'
             : '--expanded';
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1280) {
+                setIsMobileSidebarOpen(false);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className="eno-layout">

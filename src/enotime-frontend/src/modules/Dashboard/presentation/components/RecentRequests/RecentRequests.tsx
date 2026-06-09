@@ -56,25 +56,25 @@ export const RecentRequests: React.FC<RecentRequestsProps> = ({ isExpanded = fal
 
     return (
         <section className={`dashboard__requests ${isExpanded ? 'dashboard__requests--expanded' : ''}`}>
-            
-            <div className="dashboard__requests-header">
-                <h2 className="dashboard__section-title">Recent Requests</h2>
-                
-                <button onClick={onToggleExpand} className="dashboard__requests-link-btn">
-                    {isExpanded ? (
-                        <>Return <HiOutlineArrowsPointingIn /></>
-                    ) : (
-                        <>View all requests <HiOutlineArrowRight /></>
-                    )}
-                </button>
+            <div className="dashboard__requests-card">
+                <div className="dashboard__requests-header">
+                    <h2 className="dashboard__section-title">Recent Requests</h2>
+                    
+                    <button onClick={onToggleExpand} className="dashboard__requests-link-btn">
+                        {isExpanded ? (
+                            <>Return <HiOutlineArrowsPointingIn /></>
+                        ) : (
+                            <>View all requests <HiOutlineArrowRight /></>
+                        )}
+                    </button>
+                </div>
+
+                <TableShared<RequestData> 
+                    data={displayedData} 
+                    columns={displayedColumns} 
+                    rowKey={(item) => item.id} 
+                />
             </div>
-
-            <TableShared<RequestData> 
-                data={displayedData} 
-                columns={displayedColumns} 
-                rowKey={(item) => item.id} 
-            />
-
         </section>
     );
 };
