@@ -4,7 +4,7 @@ dist/
 build/
 .output/
 
-# Variables de entorno (¡MUY IMPORTANTE!)
+# Variables de entorno 
 .env
 .env.local
 .env.development.local
