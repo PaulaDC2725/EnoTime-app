@@ -1,29 +1,35 @@
+// src/shared/presentation/components/TableShared/TableShared.tsx
 import React, { useState, useMemo } from 'react';
 import { HiOutlineChevronUp, HiOutlineChevronDown, HiOutlineFunnel } from 'react-icons/hi2';
-import '../../styles/_tableShared.scss'; 
+import '../../styles/_tableShared.scss';
 
 export interface TableColumn<T> {
-    key: Extract<keyof T, string>; 
+    key: Extract<keyof T, string>;
     title: string;
-    render?: (item: T) => React.ReactNode; 
+    render?: (item: T) => React.ReactNode;
     sortable?: boolean;
     filterable?: boolean;
     align?: 'left' | 'center' | 'right';
+    width?: number | string;
 }
 
 interface TableSharedProps<T> {
     data: T[];
     columns: TableColumn<T>[];
-    rowKey: (item: T) => string | number; 
+    rowKey: (item: T) => string | number;
 }
 
 export function TableShared<T>({ data, columns, rowKey }: TableSharedProps<T>) {
-
     const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
     const [filters, setFilters] = useState<Record<string, string>>({});
     const [activeFilterKey, setActiveFilterKey] = useState<string | null>(null);
 
- 
+    // Parses the width to pixel string if it's a number
+    const getColumnWidthStyle = (width?: number | string) => {
+        if (width === undefined) return undefined;
+        return { width: typeof width === 'number' ? `${width}px` : width };
+    };
+
     const handleSort = (key: string) => {
         let direction: 'asc' | 'desc' = 'asc';
         if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -33,7 +39,7 @@ export function TableShared<T>({ data, columns, rowKey }: TableSharedProps<T>) {
     };
 
     const handleFilterChange = (key: string, value: string) => {
-        setFilters(prev => ({ ...prev, [key]: value }));
+        setFilters((prev) => ({ ...prev, [key]: value }));
     };
 
     const processedData = useMemo(() => {
@@ -66,15 +72,24 @@ export function TableShared<T>({ data, columns, rowKey }: TableSharedProps<T>) {
     return (
         <div className="eno-table__wrapper">
             <table className="eno-table">
+                {/* Colgroup setup for structural integrity */}
+                <colgroup>
+                    {columns.map((col) => (
+                        <col key={col.key} style={getColumnWidthStyle(col.width)} />
+                    ))}
+                </colgroup>
+
                 <thead className="eno-table__thead">
                     <tr>
                         {columns.map((col) => (
-                            <th 
-                                key={col.key} 
+                            <th
+                                key={col.key}
                                 className={`eno-table__th eno-table__th--${col.align || 'left'}`}
+                                /* Adding the style directly to the <th> enforces the width on stubborn browsers */
+                                style={getColumnWidthStyle(col.width)} 
                             >
                                 <div className="eno-table__th-header">
-                                    <div 
+                                    <div
                                         className={`eno-table__th-title ${col.sortable ? 'eno-table__th-title--sortable' : ''}`}
                                         onClick={() => col.sortable && handleSort(col.key)}
                                     >
@@ -83,9 +98,9 @@ export function TableShared<T>({ data, columns, rowKey }: TableSharedProps<T>) {
                                             sortConfig.direction === 'asc' ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />
                                         )}
                                     </div>
-                                    
+
                                     {col.filterable && (
-                                        <button 
+                                        <button
                                             className={`eno-table__filter-btn ${filters[col.key] ? 'eno-table__filter-btn--active' : ''}`}
                                             onClick={() => setActiveFilterKey(activeFilterKey === col.key ? null : col.key)}
                                         >
@@ -99,7 +114,7 @@ export function TableShared<T>({ data, columns, rowKey }: TableSharedProps<T>) {
                                         <input
                                             type="text"
                                             className="eno-table__filter-input"
-                                            placeholder={`Search...`}
+                                            placeholder="Search..."
                                             value={filters[col.key] || ''}
                                             onChange={(e) => handleFilterChange(col.key, e.target.value)}
                                         />
@@ -114,8 +129,8 @@ export function TableShared<T>({ data, columns, rowKey }: TableSharedProps<T>) {
                         processedData.map((item) => (
                             <tr key={rowKey(item)} className="eno-table__tr">
                                 {columns.map((col) => (
-                                    <td 
-                                        key={col.key} 
+                                    <td
+                                        key={col.key}
                                         className={`eno-table__td eno-table__td--${col.align || 'left'}`}
                                     >
                                         {col.render ? col.render(item) : String(item[col.key])}

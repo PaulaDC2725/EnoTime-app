@@ -1,9 +1,8 @@
-// src/modules/Dashboard/presentation/components/RecentRequests/RecentRequests.tsx
-import React from 'react';
+// src/modules/dashboard/presentation/components/RecentRequests/RecentRequests.tsx
+import React from "react";
 import { HiOutlineArrowRight, HiOutlineArrowsPointingIn } from 'react-icons/hi2';
 import { TableShared, type TableColumn } from '../../../../../shared/presentation/components/TableShared/TableShared';
 
-// Interfaz de datos
 interface RequestData {
     id: number;
     date: string;
@@ -27,13 +26,15 @@ interface RecentRequestsProps {
 }
 
 export const RecentRequests: React.FC<RecentRequestsProps> = ({ isExpanded = false, onToggleExpand }) => {
-
+    
+    // Fixed widths mapped to sum exactly the 600px minimum width of the table
     const baseColumns: TableColumn<RequestData>[] = [
-        { key: 'date', title: 'Date', sortable: true },
-        { key: 'type', title: 'Type', sortable: true, filterable: true },
-        { key: 'period', title: 'Period' },
-        { 
-            key: 'status', 
+        { key: 'date', title: 'Date', sortable: true, width: 20 }, 
+        { key: 'type', title: 'Type', sortable: true, filterable: true, width: 20 }, 
+        { key: 'period', title: 'Period', width: 20 }, 
+        {
+            key: 'status',
+            width: 20, 
             title: 'Status',
             sortable: true,
             filterable: true,
@@ -43,15 +44,16 @@ export const RecentRequests: React.FC<RecentRequestsProps> = ({ isExpanded = fal
                 </span>
             )
         },
-        { key: 'days', title: 'Days', align: 'center', sortable: true }
+        { key: 'days', title: 'Days', align: 'center', sortable: true, width: 5 }
     ];
 
     const displayedData = isExpanded ? recentRequests : recentRequests.slice(0, 3);
 
-    const displayedColumns = baseColumns.map(col => ({
+    const displayedColumns = baseColumns.map((col) => ({
         ...col,
         sortable: isExpanded ? col.sortable : false,
-        filterable: isExpanded ? col.filterable : false
+        filterable: isExpanded ? col.filterable : false,
+        width: col.width
     }));
 
     return (
@@ -59,7 +61,7 @@ export const RecentRequests: React.FC<RecentRequestsProps> = ({ isExpanded = fal
             <div className="dashboard__requests-card">
                 <div className="dashboard__requests-header">
                     <h2 className="dashboard__section-title">Recent Requests</h2>
-                    
+
                     <button onClick={onToggleExpand} className="dashboard__requests-link-btn">
                         {isExpanded ? (
                             <>Return <HiOutlineArrowsPointingIn /></>
@@ -69,10 +71,10 @@ export const RecentRequests: React.FC<RecentRequestsProps> = ({ isExpanded = fal
                     </button>
                 </div>
 
-                <TableShared<RequestData> 
-                    data={displayedData} 
-                    columns={displayedColumns} 
-                    rowKey={(item) => item.id} 
+                <TableShared<RequestData>
+                    data={displayedData}
+                    columns={displayedColumns}
+                    rowKey={(item) => item.id}
                 />
             </div>
         </section>

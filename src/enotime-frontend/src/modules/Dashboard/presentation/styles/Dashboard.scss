@@ -175,6 +175,8 @@ $dashboard-content-grid-height: calc(100% - #{$dashboard-balances-height});
     width: 100%;
     max-width: 100%;
     min-width: 0;
+    min-height: 0;
+    flex: 1 1 auto;
 
     &--expanded {
       flex: 1;
@@ -196,10 +198,12 @@ $dashboard-content-grid-height: calc(100% - #{$dashboard-balances-height});
   &__chart-card {
     background-color: $color-white;
     width: 100%;
+    height: 100%;
     border-radius: $radius-lg;
     padding: $space-lg;
     max-width: 100%;
     min-width: 0;
+    min-height: 0;
     box-sizing: border-box;
     overflow: hidden;
     display: flex;
@@ -210,6 +214,12 @@ $dashboard-content-grid-height: calc(100% - #{$dashboard-balances-height});
       width: 100% !important;
       max-width: 100%;
     }
+  }
+
+  &__chart-plot {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
   }
 
   &__chart-header {
@@ -309,7 +319,8 @@ $dashboard-content-grid-height: calc(100% - #{$dashboard-balances-height});
     gap: $space-md;
     width: 100%;
     max-width: 100%;
-    max-width: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
 
     &--expanded {
       flex: 1;
@@ -335,8 +346,19 @@ $dashboard-content-grid-height: calc(100% - #{$dashboard-balances-height});
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     min-width: 0;
+    min-height: 0;
     box-sizing: border-box;
+    overflow: hidden;
+
+    .eno-table__wrapper {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 0;
+      box-sizing: border-box;
+      overflow: auto;
+    }
   }
 
   &__requests-header {
