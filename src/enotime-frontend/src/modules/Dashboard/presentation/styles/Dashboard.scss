@@ -1,12 +1,18 @@
 @import "../../../../styles/variables";
 
+$dashboard-balances-height: min(238px, calc(100% * 0.330556));
+$dashboard-content-grid-height: calc(100% - #{$dashboard-balances-height});
+
 .dashboard {
   display: flex;
   flex-direction: column;
   gap: $space-xsm;
   max-height: 100%;
   width: 100%;
-  min-width: 0;
+  @media (min-width: 1024px) {
+    height: 100%;
+    gap: $space-2md;
+  }
 
   // =========================
   // BALANCES CAROUSEL
@@ -16,6 +22,12 @@
     display: flex;
     flex-direction: column;
     gap: $space-gap-general;
+
+    @media (min-width: 1024px) {
+      height: $dashboard-balances-height;
+      min-height: $dashboard-balances-height;
+      box-sizing: border-box;
+    }
   }
 
   &__carousel {
@@ -27,6 +39,14 @@
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    @media (min-width: 1024px) {
+      gap: $space-2md;
+      height: 100%;
+      align-items: stretch;
+      overflow: visible;
+      box-sizing: border-box;
     }
   }
 
@@ -44,6 +64,9 @@
     @media (min-width: 1024px) {
       min-width: auto !important;
       flex: 1;
+      height: 100%;
+      min-height: 0;
+      box-sizing: border-box;
     }
   }
 
@@ -131,6 +154,9 @@
     display: flex;
     flex-direction: column;
     gap: $space-md;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
     &--expanded {
       flex: 1;
@@ -138,6 +164,9 @@
       flex-direction: column;
       overflow: hidden;
 
+      @media (min-width: 1024px) {
+        grid-column: 2 span;
+      }
       .dashboard__chart-card {
         flex: 1;
         display: flex;
@@ -148,9 +177,21 @@
 
   &__chart-card {
     background-color: $color-white;
+    width: 100%;
     border-radius: $radius-lg;
     padding: $space-lg;
-    box-shadow: $shadow-md;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .echarts-for-react,
+    .echarts-for-react > div {
+      width: 100% !important;
+      max-width: 100%;
+    }
   }
 
   &__chart-header {
@@ -249,7 +290,7 @@
     flex-direction: column;
     gap: $space-md;
     width: 100%;
-    min-width: 0;
+    max-width: 100%;
     max-width: 100%;
 
     &--expanded {
@@ -257,6 +298,9 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      @media (min-width: 1024px) {
+        grid-column: 2 span;
+      }
 
       .eno-table__wrapper {
         flex: 1;
@@ -273,7 +317,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
   }
@@ -325,12 +368,35 @@
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
+
+    @media (min-width: 1024px) {
+      height: $dashboard-content-grid-height;
+      min-height: 0;
+    }
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  &__chart-section,
+  &__requests,
+  &__chart-card,
+  &__requests-card,
+  &__content-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  &__chart-card,
+  &__requests-card {
+    overflow: hidden;
   }
 
   &__table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px;
+    min-width: 0;
     text-align: left;
 
     th {
@@ -399,13 +465,8 @@
   // =========================
 
   @media (min-width: 1024px) {
-    &__carousel {
-      overflow: visible;
-    }
-
     &__balance-card {
       min-width: 320px;
-      flex: 1;
     }
 
     &__indicators {
@@ -414,15 +475,17 @@
 
     &__content-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
-      gap: $space-lg;
-      align-items: start;
+      grid-template-columns: repeat(1, 1fr);
+      gap: $space-2md;
+      align-items: stretch;
     }
 
     &__chart-section,
     &__requests {
       min-width: 0;
       max-width: 100%;
+      min-height: 0;
+      height: 100%;
     }
 
     &__chart-card,
@@ -431,14 +494,17 @@
       min-width: 0;
       max-width: 100%;
       box-sizing: border-box;
-    }
-
-    &__chart-card {
-      min-height: 380px;
+      height: 100%;
+      min-height: 0;
+      flex: 1 1 auto;
     }
 
     &__requests-card {
       height: 100%;
+    }
+
+    &__table {
+      min-width: 500px;
     }
   }
 }

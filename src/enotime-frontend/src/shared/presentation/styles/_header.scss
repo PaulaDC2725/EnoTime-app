@@ -1,56 +1,62 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
 .eno-header {
+  display: flex;
+  flex-direction: row;
+  gap: $space-sm;
+  justify-content: space-between;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2xxs;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    height: 42px;
+    @media (min-width: 1024px) {
+      height: 33px;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: $font-size-sm;
+    color: $color-text-primary-light;
+    max-width: 260px;
+    height: 44px;
+    @media (min-width: 1024px) {
+      height: 33px;
+    }
+  }
+
+  &__date-group {
     display: flex;
     flex-direction: row;
-    gap: $space-sm;
-    justify-content: space-between;
     align-items: center;
+    gap: $space-0;
 
-    &__content {
-        display: flex;
-        flex-direction: column;
-        gap: $space-2xxs;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      gap: $space-sm;
     }
+  }
 
-    &__title {
-        margin: 0;
-        font-size: $font-size-xl;
-        font-weight: $font-weight-bold;
-        color: $color-text-primary;
-        height: 42px;
-    }
+  &__icon {
+    width: 20px;
+    height: 20px;
+    color: $color-text-primary-light;
+  }
 
-    &__subtitle {
-        margin: 0;
-        font-size: $font-size-sm;
-        color: $color-text-primary-light;
-        max-width: 260px; // Evita que el texto empuje la fecha en móviles
-        height: 44px;
-    }
-
-    &__date-group {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: $space-0;
-
-        @media (min-width: 768px) {
-            flex-direction: row;
-            align-items: center;
-            gap: $space-sm;
-        }
-    }
-
-    &__icon {
-        width: 20px;
-        height: 20px;
-        color: $color-text-primary-light;
-    }
-
-    &__date-text {
-        font-size: $font-size-xs;
-        color: $color-text-primary-light;
-        text-align: right;
-    }
+  &__date-text {
+    font-size: $font-size-xs;
+    color: $color-text-primary-light;
+    text-align: right;
+  }
 }
