@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import Vacations from "../../../../../assets/icons/Vacations.svg?react"
 import {
-    HiOutlineClock,
+    HiOutlineCalendarDays, 
     HiOutlineDocumentText,
+    HiOutlinePercentBadge,
 } from 'react-icons/hi2';
 
 const balanceCards = [
@@ -18,7 +19,7 @@ const balanceCards = [
         title: 'Available Compensatory Days',
         value: '4',
         subtitle: 'business days',
-        icon: <HiOutlineClock />,
+        icon: <HiOutlineCalendarDays />,
     },
     {
         id: 3,
@@ -32,7 +33,7 @@ const balanceCards = [
         title: 'Annual Usage',
         value: '35%',
         subtitle: 'of annual total',
-        icon: <HiOutlineDocumentText />,
+        icon: <HiOutlinePercentBadge />,
     },
 ];
 
